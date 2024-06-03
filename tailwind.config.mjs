@@ -11,8 +11,8 @@ export default {
         code: ["JetBrainsMonoNL"],
       },
       colors: {
-        primario: "#333333",
-        secundario: "#22d0c9",
+        primario: "#4b0082",
+        secundario: "#96f6e0",
       },
     },
   },
