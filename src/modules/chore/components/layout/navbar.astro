@@ -11,6 +11,7 @@ const links = [
     href: '/contacto',
   },
 ];
+const pathName = Astro.url.pathname;
 ---
 
 <nav
@@ -21,7 +22,10 @@ const links = [
     {
       links.map(({ name, href }) => (
         <li>
-          <a href={href} class="no-underline relative font-code">
+          <a
+            href={href}
+            class={`relative font-code ${pathName.includes(href) && 'border-l-2 border-primario dark:border-secundario '}`}
+          >
             {name}
             <span class="absolute bottom-0 left-0 w-0 h-0 border-t-2 border-primario dark:border-secundario transition-all duration-300" />
           </a>
