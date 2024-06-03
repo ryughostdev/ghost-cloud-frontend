@@ -9,6 +9,7 @@ export default {
     extend: {
       fontFamily: {
         code: ["JetBrainsMonoNL"],
+        geist: ["Geist-Regular"],
       },
       colors: {
         primario: "#4b0082",

@@ -1,4 +1,5 @@
 ---
+import { appName } from '@/modules/chore/config/constants';
 import BaseHead from '@chore/utils/BaseHead.astro';
 
 interface Props {
@@ -7,28 +8,37 @@ interface Props {
   image?: string;
 }
 const {
-  title = 'Leo Serrano - Portfolio',
-  description = 'Website of Leo Serrano, a full-stack developer from Costa Rica.',
-  image = '/leoserranodev.jpg',
+  title=`Inicio | ${appName}`,
+  description=`En ${appName} ofrecemos el servicio de Cloud Computing que necesitas para tu empresa.`,
+  image = 'https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=600',
 } = Astro.props as Props;
 const { currentLocale } = Astro;
 ---
 
 <!doctype html>
-<html class="" lang={currentLocale}>
+<html class="dark" lang=es>
   <head>
     <BaseHead title={title} description={description} image={image} />
   </head>
 
   <body
-    class="font-code dark:bg-primario bg-secundario text-primario dark:text-secundario flex flex-col h-full w-full justify-center items-center"
+    class="font-geist dark:bg-primario bg-secundario text-primario dark:text-secundario flex flex-col h-screen w-full justify-center items-center"
   >
     <header
-      class=""
+      class="w-full flex justify-center items-center"
     >
-      Header va aqui
+      <nav class="flex justify-between items-center w-3/4 h-[5rem] p-4 fixed top-0 dark:bg-primario bg-secundario text-primario dark:text-secundario">
+        <a href="/" class="text-xl font-bold">{appName}</a>
+        <ul class="flex space-x-4">
+          <li>
+            <a href="/login" class="hover:underline">Login</a>
+          </li>
+          <li>
+            <a href="/contacto" class="hover:underline">Contáctenos</a>
+          </li>
+        </ul>
     </header>
-    <main class="flex flex-col h-full w-full m-auto items-center relative">
+    <main class="flex flex-col h-full w-full mt-[5rem] items-center relative">
       <slot />
     </main>
   </body>

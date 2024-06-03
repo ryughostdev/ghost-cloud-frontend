@@ -9,8 +9,26 @@ import { appName } from "@chore/config/constants";
   title=`Inicio | ${appName}`
   description=`En ${appName} ofrecemos el servicio de Cloud Computing que necesitas para tu empresa.`
 >
-<div class="text-2xl">
-	Hola Mundo
-</div>
+<section class="flex gap-2 w-full h-[35rem] bg-black">
+  <div class="hero-home w-full">
+    <div class="w-1/3 p-10 h-full gap-4 flex flex-col justify-center text-secundario">
+
+      <h1 class="text-4xl font-bold text-left font-code uppercase">{appName}</h1>
+      <p class="text-left font-code uppercase text-xl">El Cloud Computing que necesitas para tu empresa.</p>
+    </div>
+
+  </div>
+</section>
 
 </MainLayout>
+
+<style>
+  .hero-home {
+    background-image: url('https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=600');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(41, 2, 57, 0.67);
+    background-blend-mode: overlay;
+  }
+</style>
