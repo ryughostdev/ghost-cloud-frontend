@@ -1,7 +1,7 @@
 import { atom } from 'nanostores';
 interface LoginDataResponse {
   id: number;
-  username: string;
+  name: string;
   email: string;
   active: boolean;
   isLoggedIn: boolean;
@@ -13,7 +13,7 @@ export type AuthDataProps = LoginDataResponse;
 export const $user = atom<AuthDataProps>({
   isLoggedIn: false,
   id: 0,
-  username: '',
+  name: '',
   email: '',
   active: false,
   createdAt: '',

@@ -23,7 +23,7 @@ export async function fetchAPI<T>({
   };
   try {
     const response = await fetch(`${url}`, config);
-    const { data } = await response.json();
+    const data = await response.json();
 
     if (response.status >= 200 && response.status < 300) {
       return data;
