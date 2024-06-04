@@ -8,9 +8,9 @@
       "@/*": ["*"],
       "@styles/*": ["styles/*"],
       "@chore/*": ["modules/chore/*"],
-      "@modules/*": ["components/*"],
+      "@modules/*": ["modules/*"],
       "@stores/*": ["stores/*"],
-      "@icons/*": ["icons/*"]
+      "@icons/*": ["modules/chore/components/icons/*"]
     }
   }
 }

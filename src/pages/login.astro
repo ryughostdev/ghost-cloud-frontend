@@ -1,49 +1,14 @@
 ---
 import MainLayout from '@/layouts/MainLayout.astro';
 import { appName } from '@chore/config/constants';
+import { LoginForm } from '@/modules/auth/components/login/LoginForm';
 ---
 
 <MainLayout
   title=`Login | ${appName}`
   description=`Accede a ${appName} para gestionar tus servicios`
 >
-  <section class="flex gap-2 w-full h-[35rem] bg-black">
-    <div class="hero-home w-full flex justify-center">
-      <div class="w-full max-w-md p-4 bg-white rounded-lg shadow-lg">
-        <h1 class="text-2xl font-bold text-center">Iniciar sesión</h1>
-        <form class="mt-4">
-          <div class="mb-4">
-            <label for="email" class="block text-sm font-medium text-gray-700"
-              >Correo electrónico</label
-            >
-            <input
-              type="email"
-              id="email"
-              name="email"
-              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            />
-          </div>
-          <div class="mb-4">
-            <label
-              for="password"
-              class="block text-sm font-medium text-gray-700">Contraseña</label
-            >
-            <input
-              type="password"
-              id="password"
-              name="password"
-              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            />
-          </div>
-          <div class="mb-4">
-            <button
-              type="submit"
-              class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              >Iniciar sesión</button
-            >
-          </div>
-        </form>
-      </div>
-    </div>
+  <section class="flex flex-col items-center justify-center w-full h-full">
+    <LoginForm client:load />
   </section>
 </MainLayout>
