@@ -1,6 +1,6 @@
 import { Button, Link } from '@nextui-org/react';
 import { IsLoggedInHandle } from './IsLoggedInHandle';
-import { useLoginForm } from './useLoginForm';
+import { useLoginForm } from '@modules/auth/hooks/useLoginForm';
 import { InputEmailLoginForm } from './InputEmailLoginForm';
 import { InputPasswordLoginForm } from './InputPasswordLoginForm';
 
@@ -18,7 +18,7 @@ export const LoginForm = () => {
     isPending,
   } = useLoginForm({ email: '', password: '' });
   if (user.isLoggedIn) {
-    return <IsLoggedInHandle />;
+    return <IsLoggedInHandle user={user} />;
   }
 
   return (

@@ -1,11 +1,9 @@
 import { Button } from '@nextui-org/react';
-import { useIsLoggedInHandle } from './useIsLoggedInHandle';
-import { useStore } from '@nanostores/react';
-import { $user } from '@/stores/users';
+import { useIsLoggedInHandle } from '@modules/auth/hooks/useIsLoggedInHandle';
+import type { AuthDataProps } from '@/stores/users';
 
-export const IsLoggedInHandle = () => {
-  const { handleLogout, isPending } = useIsLoggedInHandle();
-  const user = useStore($user);
+export const IsLoggedInHandle = ({ user }: { user: AuthDataProps }) => {
+  const { handleLogout, isPending } = useIsLoggedInHandle({ user });
   return (
     <div className="flex flex-col items-center justify-center gap-4">
       <h1 className="text-2xl">Hola {user.name}</h1>

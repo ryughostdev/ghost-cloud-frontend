@@ -21,17 +21,13 @@ export async function fetchAPI<T>({
         : JSON.stringify(body),
     headers: isFormData ? undefined : { 'Content-Type': 'application/json' },
   };
-  try {
-    const response = await fetch(`${url}`, config);
-    const data = await response.json();
 
-    if (response.status >= 200 && response.status < 300) {
-      return data;
-    } else {
-      const error = data.message || 'Unknown error occurred';
-      throw new Error(error);
-    }
-  } catch (error) {
-    throw new Error('Error occurred while fetching data');
+  const response = await fetch(`${url}`, config);
+  const data = await response.json();
+
+  if (response.status >= 200 && response.status < 300) {
+    return data;
+  } else {
+    throw new Error(`${data.statusCode}-${data.message}`);
   }
 }
