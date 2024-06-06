@@ -6,6 +6,7 @@ import { setLocalStorage } from '@/modules/chore/utils/handleLocalStorage';
 import { loginService } from '../services/authService';
 import { ErrorCode, ErrorMessage } from '@/modules/chore/utils/ErrorMsgFormat';
 import { ghostToast } from '@/modules/chore/components/ghostToast';
+
 export const useLoginForm = (formInit: { email: string; password: string }) => {
   const user = useStore($user);
   const [form, setForm] = useState(formInit);
@@ -18,6 +19,9 @@ export const useLoginForm = (formInit: { email: string; password: string }) => {
       $user.set(data);
       setLocalStorage('user', data);
       ghostToast({ message: `Bienvenido ${data.name}` });
+      setForm(formInit);
+      setIsInvalidPass(false);
+      setIsVisible(false);
     } else if (status === 'error') {
       if (ErrorCode(error.message) === 403) {
         ghostToast({ message: `${user.name}, ya has iniciado sesión` });
