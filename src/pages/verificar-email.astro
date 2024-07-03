@@ -1,0 +1,17 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import { appName } from '@chore/config/constants';
+import { VerifyEmail } from '@modules/auth/components/verify-email/VerifyEmail';
+export const prerender = false;
+const params = Astro.url.searchParams;
+const token = params.get('token');
+---
+
+<MainLayout
+  title=`Verificación de email | ${appName}`
+  description=`verifica tu email, en ${appName}`
+>
+  <section class="flex flex-col items-center justify-center w-full h-full">
+    <VerifyEmail client:load token={token ?? ''} />
+  </section>
+</MainLayout>

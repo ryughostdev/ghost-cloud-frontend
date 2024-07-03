@@ -15,3 +15,11 @@ export const loginService = () => {
     method: 'POST',
   });
 };
+
+export const verifyEmailService = ({ token }: { token: string }) => {
+  return postData({
+    key: 'verify-email',
+    url: `${Server1API}/auth/verify-email/${token}`,
+    method: 'GET',
+  });
+};

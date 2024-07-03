@@ -3,7 +3,7 @@ interface LoginDataResponse {
   id: number;
   name: string;
   email: string;
-  active: boolean;
+  status: string;
   isLoggedIn: boolean;
   createdAt: string;
   updatedAt: string;
@@ -15,7 +15,7 @@ export const $user = atom<AuthDataProps>({
   id: 0,
   name: '',
   email: '',
-  active: false,
+  status: 'inactive',
   createdAt: '',
   updatedAt: '',
 });
