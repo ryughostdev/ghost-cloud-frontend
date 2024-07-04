@@ -15,6 +15,13 @@ export const loginService = () => {
     method: 'POST',
   });
 };
+export const signUpService = () => {
+  return postData({
+    key: 'sign-up',
+    url: `${Server1API}/users`,
+    method: 'POST',
+  });
+};
 
 export const verifyEmailService = ({ token }: { token: string }) => {
   return postData({

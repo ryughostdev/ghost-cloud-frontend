@@ -45,7 +45,7 @@ export const LoginForm = () => {
         <Button
           isLoading={isPending}
           type="submit"
-          className="uppercase"
+          className="uppercase w-1/2 my-0 mx-auto"
           color="primary"
         >
           Entrar

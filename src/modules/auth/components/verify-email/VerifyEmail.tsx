@@ -4,6 +4,7 @@ import { useStore } from '@nanostores/react';
 import { setLocalStorage } from '@/modules/chore/utils/handleLocalStorage';
 import { ghostToast } from '@/modules/chore/components/ghostToast';
 import { useEffect } from 'react';
+import { Button, Link } from '@nextui-org/react';
 
 export const VerifyEmail = ({ token }: { token: string }) => {
   const user = useStore($user);
@@ -25,12 +26,21 @@ export const VerifyEmail = ({ token }: { token: string }) => {
   }, [status]);
 
   return (
-    <div>
-      {status === 'pending'
-        ? 'Verificando...'
-        : status === 'success'
-        ? 'Correo verificado correctamente'
-        : 'Token inválido'}
+    <div className="flex flex-col items-center justify-center gap-10">
+      <p>
+        {status === 'pending'
+          ? 'Verificando...'
+          : status === 'success'
+          ? 'Correo verificado correctamente'
+          : status === 'error'
+          ? 'Token inválido'
+          : 'Verificando...'}
+      </p>
+      <div>
+        <Button as={Link} isDisabled={status === 'pending'} href="/">
+          Ir a Inicio
+        </Button>
+      </div>
     </div>
   );
 };

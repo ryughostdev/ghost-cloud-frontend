@@ -1,0 +1,14 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import { appName } from '@chore/config/constants';
+import { SignUpForm } from '@/modules/auth/components/signUp/SignUpForm';
+---
+
+<MainLayout
+  title=`Registro de usuario | ${appName}`
+  description=`Regístrate en ${appName} para comenzar a disfrutar de nuestros servicios.`
+>
+  <section class="flex flex-col items-center justify-center w-full h-full">
+    <SignUpForm client:only="react" />
+  </section>
+</MainLayout>

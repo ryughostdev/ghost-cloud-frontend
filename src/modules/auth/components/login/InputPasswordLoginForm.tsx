@@ -1,8 +1,21 @@
+import React from 'react';
 import { KeyIcon } from '@icons/KeyIcon';
 import { Input } from '@nextui-org/react';
 import { EndContentInputPassword } from './EndContentInputPassword';
 
-export const InputPasswordLoginForm = ({ handle }: any) => {
+export const InputPasswordLoginForm = ({
+  handle,
+}: {
+  handle: {
+    // eslint-disable-next-line
+    handleOnChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    isVisible: boolean;
+    toggleVisibility: () => void;
+    isInvalidPass?: boolean;
+    password: string;
+    confirmPassword?: boolean;
+  };
+}) => {
   const {
     handleOnChange,
     isVisible,
@@ -13,7 +26,7 @@ export const InputPasswordLoginForm = ({ handle }: any) => {
   } = handle;
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center">
       <Input
         size="lg"
         label={confirmPassword ? 'Confirmar contraseña' : 'Contraseña'}
