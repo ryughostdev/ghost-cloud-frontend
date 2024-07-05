@@ -1,21 +1,35 @@
+import type { LoggedUser } from '@/modules/auth/interfaces/LoginInterface';
 import { atom } from 'nanostores';
-interface LoginDataResponse {
-  id: number;
-  name: string;
-  email: string;
-  status: string;
-  isLoggedIn: boolean;
-  createdAt: string;
-  updatedAt: string;
-}
 
-export type AuthDataProps = LoginDataResponse;
+export type AuthDataProps = LoggedUser;
 export const $user = atom<AuthDataProps>({
   isLoggedIn: false,
   id: 0,
   name: '',
   email: '',
   status: 'inactive',
-  createdAt: '',
-  updatedAt: '',
+  createdAt: new Date(),
+  updatedAt: new Date(),
+  services: [
+    {
+      id: 0,
+      name: '',
+      status: 'inactive',
+      memory: 0,
+      cores: 0,
+      disk: 0,
+      os: '',
+      price: 0,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+  ],
+  roles: [
+    {
+      id: 0,
+      name: '',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+  ],
 });

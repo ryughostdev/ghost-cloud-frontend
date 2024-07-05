@@ -1,4 +1,4 @@
-export async function fetchAPI<T>({
+export async function fetchAPI<TResponse, TBody = undefined>({
   url,
   method = 'GET',
   body = null,
@@ -6,9 +6,9 @@ export async function fetchAPI<T>({
 }: {
   url: string;
   method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
-  body?: T | FormData | null;
+  body?: TBody | FormData | null;
   isFormData?: boolean;
-}) {
+}): Promise<TResponse> {
   // eslint-disable-next-line no-undef
   const config: RequestInit = {
     method,
@@ -25,7 +25,7 @@ export async function fetchAPI<T>({
   const response = await fetch(`${url}`, config);
   const data = await response.json();
 
-  if (response.status >= 200 && response.status < 300) {
+  if (response.ok) {
     return data;
   } else {
     throw new Error(`${data.statusCode}-${data.message}`);

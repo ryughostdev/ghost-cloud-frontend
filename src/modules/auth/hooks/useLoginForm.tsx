@@ -18,7 +18,7 @@ export const useLoginForm = (formInit: { email: string; password: string }) => {
     if (status === 'success') {
       $user.set(data);
       setLocalStorage('user', data);
-      ghostToast({ message: `Bienvenido ${data.name}` });
+      ghostToast({ message: `Sesión iniciada ${data.name}!` });
       setForm(formInit);
       setIsInvalidPass(false);
       setIsVisible(false);

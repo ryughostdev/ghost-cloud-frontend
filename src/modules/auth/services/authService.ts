@@ -1,5 +1,6 @@
 import { postData } from '@/modules/chore/services/HandleAPI';
 import { Server1API } from '@/modules/chore/config/constants';
+import type { LoggedUser } from '../interfaces/LoginInterface';
 
 export const logoutService = () => {
   return postData({
@@ -9,7 +10,7 @@ export const logoutService = () => {
   });
 };
 export const loginService = () => {
-  return postData({
+  return postData<LoggedUser>({
     key: 'login',
     url: `${Server1API}/auth/login`,
     method: 'POST',
