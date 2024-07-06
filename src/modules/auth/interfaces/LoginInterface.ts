@@ -1,4 +1,4 @@
-export interface LoggedUser {
+export interface User {
   id: number;
   email: string;
   name: string;
@@ -7,9 +7,7 @@ export interface LoggedUser {
   updatedAt: Date;
   services: ServiceInstance[];
   roles: Roles[];
-  isLoggedIn: boolean;
 }
-
 export interface ServiceInstance {
   id: number;
   name: string;
@@ -28,4 +26,7 @@ export interface Roles {
   name: string;
   createdAt: Date;
   updatedAt: Date;
+}
+export interface LoggedUser extends User {
+  isLoggedIn: boolean;
 }
