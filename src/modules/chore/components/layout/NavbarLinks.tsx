@@ -1,8 +1,6 @@
-import { useStore } from '@nanostores/react';
 import { type LinksProps } from '../../interfaces/NavbarInterfaces';
-import { $user } from '@/stores/users';
+import { checkUserStatus } from '../../utils/checkUserStatus';
 export const NavbarLinks = ({ pathName }: { pathName: string }) => {
-  const user = useStore($user);
   const links: LinksProps[] = [
     {
       name: 'Contacto',
@@ -21,9 +19,7 @@ export const NavbarLinks = ({ pathName }: { pathName: string }) => {
   return (
     <>
       {links.map(({ name, href, isLoggedIn, roles }) =>
-        !isLoggedIn ||
-        (isLoggedIn && user.isLoggedIn && roles.length === 0) ||
-        roles.some((role) => user.roles.includes(role)) ? (
+        checkUserStatus({ isLoggedIn, roles }) ? (
           <li key={name}>
             <a
               href={href}
