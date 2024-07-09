@@ -1,0 +1,15 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import { appName } from '@chore/config/constants';
+import { MyServices } from '@modules/services/components/MyServices/MyServices';
+export const prerender = false;
+---
+
+<MainLayout
+  title=`Mis Servicios | ${appName}`
+  description=`Accede a la información de todos tus servicios ${appName}.`
+>
+  <section class="flex flex-col items-center justify-center w-full h-full">
+    <MyServices client:only="react" />
+  </section>
+</MainLayout>

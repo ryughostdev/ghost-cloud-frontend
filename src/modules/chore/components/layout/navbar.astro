@@ -1,13 +1,8 @@
 ---
 import { appName } from '@chore/config/constants';
 import { LoginNavButton } from './LoginNavButton';
+import { NavbarLinks } from './NavbarLinks';
 
-const links = [
-  {
-    name: 'Contacto',
-    href: '/contacto',
-  },
-];
 const pathName = Astro.url.pathname;
 ---
 
@@ -16,19 +11,7 @@ const pathName = Astro.url.pathname;
 >
   <a href="/" class="text-xl font-bold font-code uppercase">{appName}</a>
   <ul class="flex gap-4">
-    {
-      links.map(({ name, href }) => (
-        <li>
-          <a
-            href={href}
-            class={`linkNav relative font-code ${pathName.includes(href) && 'border-l-2 border-primario dark:border-secundario '}`}
-          >
-            {name}
-            <span class="absolute bottom-0 left-0 w-0 h-0 border-t-2 border-primario dark:border-secundario transition-all duration-300" />
-          </a>
-        </li>
-      ))
-    }
+    <NavbarLinks pathName={pathName} client:only="react" />
     <LoginNavButton pathName={pathName} client:only="react" />
   </ul>
 </nav>

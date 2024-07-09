@@ -3,10 +3,7 @@ export interface User {
   email: string;
   name: string;
   status: 'active' | 'inactive';
-  createdAt: Date;
-  updatedAt: Date;
-  services: ServiceInstance[];
-  roles: Roles[];
+  roles: number[];
 }
 export interface ServiceInstance {
   id: number;
@@ -17,13 +14,6 @@ export interface ServiceInstance {
   disk: number;
   os: string;
   price: number;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
-export interface Roles {
-  id: number;
-  name: string;
   createdAt: Date;
   updatedAt: Date;
 }

@@ -8,28 +8,5 @@ export const $user = atom<AuthDataProps>({
   name: '',
   email: '',
   status: 'inactive',
-  createdAt: new Date(),
-  updatedAt: new Date(),
-  services: [
-    {
-      id: 0,
-      name: '',
-      status: 'inactive',
-      memory: 0,
-      cores: 0,
-      disk: 0,
-      os: '',
-      price: 0,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-  ],
-  roles: [
-    {
-      id: 0,
-      name: '',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-  ],
+  roles: [2],
 });
