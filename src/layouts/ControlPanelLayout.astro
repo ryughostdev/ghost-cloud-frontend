@@ -1,0 +1,25 @@
+---
+import { appName } from '@/modules/chore/config/constants';
+import MainLayout from './MainLayout.astro';
+import ControlPanelNavBar from '@/modules/chore/components/layout/ControlPanel/ControlPanelNavBar.astro';
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title,
+  description = `Panel de Control de ${appName}`,
+  image,
+} = Astro.props as Props;
+---
+
+<MainLayout title={title} description={description} image={image}>
+  <div class="flex w-full h-full">
+    <div class="border-1 p-8 w-1/4">
+      <ControlPanelNavBar />
+    </div>
+    <section class="w-3/4"><slot /></section>
+  </div>
+</MainLayout>

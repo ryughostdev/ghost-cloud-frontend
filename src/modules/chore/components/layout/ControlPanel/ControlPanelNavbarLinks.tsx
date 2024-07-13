@@ -1,25 +1,18 @@
-import { userRoles } from '../../config/constants';
-import { type LinksProps } from '../../interfaces/NavbarInterfaces';
-import { checkUserStatus } from '../../utils/checkUserStatus';
-export const NavbarLinks = ({ pathName }: { pathName: string }) => {
+import { userRoles } from '@/modules/chore/config/constants';
+import type { LinksProps } from '@/modules/chore/interfaces/NavbarInterfaces';
+import { checkUserStatus } from '@/modules/chore/utils/checkUserStatus';
+
+export const ControlPanelNavbarLinks = ({ pathName }: { pathName: string }) => {
   const links: LinksProps[] = [
     {
-      name: 'Contacto',
-      href: '/contacto',
-      isLoggedIn: false,
-      roles: [],
-      negativeRoles: [userRoles.Admin.id],
-    },
-    {
-      name: 'Mis servicios',
-      href: '/mis-servicios',
+      name: 'Clientes',
+      href: '/panel-de-control/clientes',
       isLoggedIn: true,
-      roles: [],
-      negativeRoles: [userRoles.Admin.id],
+      roles: [userRoles.Admin.id],
     },
     {
-      name: 'Panel de Control',
-      href: '/panel-de-control',
+      name: 'Servicios',
+      href: 'panel-de-control/servicios',
       isLoggedIn: true,
       roles: [userRoles.Admin.id],
     },

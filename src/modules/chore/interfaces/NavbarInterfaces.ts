@@ -3,4 +3,5 @@ export interface LinksProps {
   href: string;
   isLoggedIn: boolean;
   roles: number[];
+  negativeRoles?: number[];
 }

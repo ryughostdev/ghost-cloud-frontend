@@ -1,0 +1,13 @@
+---
+import ControlPanelLayout from '@/layouts/ControlPanelLayout.astro';
+import { appName } from '@chore/config/constants';
+---
+
+<ControlPanelLayout
+  title=`Panel de Control | ${appName}`
+  description=`Panel de Control de ${appName}.`
+>
+  <section class="flex flex-col items-center justify-center w-full h-full">
+    Area de Administración de Ghost Cloud
+  </section>
+</ControlPanelLayout>

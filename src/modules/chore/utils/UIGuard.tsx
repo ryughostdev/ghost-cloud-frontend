@@ -7,15 +7,17 @@ export const UIGuard = ({
   children,
   isLoggedIn = false,
   roles = [],
+  negativeRoles = [],
 }: {
   children: React.ReactNode;
   isLoggedIn: boolean;
   roles: number[];
+  negativeRoles?: number[];
 }) => {
   const user = useStore($user);
   return (
     <div>
-      {checkUserStatus({ isLoggedIn, roles }) ? (
+      {checkUserStatus({ isLoggedIn, roles, negativeRoles }) ? (
         children
       ) : (
         <div>
