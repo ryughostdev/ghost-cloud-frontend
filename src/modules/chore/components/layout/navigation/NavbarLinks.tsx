@@ -1,6 +1,6 @@
-import { userRoles } from '../../config/constants';
-import { type LinksProps } from '../../interfaces/NavbarInterfaces';
-import { checkUserStatus } from '../../utils/checkUserStatus';
+import { userRoles } from '../../../config/constants';
+import { type LinksProps } from '../../../interfaces/NavbarInterfaces';
+import { checkUserStatus } from '../../../utils/checkUserStatus';
 export const NavbarLinks = ({ pathName }: { pathName: string }) => {
   const links: LinksProps[] = [
     {

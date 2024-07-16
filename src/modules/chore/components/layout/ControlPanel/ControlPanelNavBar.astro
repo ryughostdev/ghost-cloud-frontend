@@ -3,7 +3,9 @@ import { ControlPanelNavbarLinks } from '@chore/components/layout/ControlPanel/C
 const pathName = Astro.url.pathname;
 ---
 
-<nav class="dark:bg-primario bg-secundario text-primario dark:text-secundario">
+<nav
+  class="dark:bg-primario bg-secundario text-primario dark:text-secundario z-30"
+>
   <ul class="flex flex-col items-center gap-4">
     <ControlPanelNavbarLinks pathName={pathName} client:only="react" />
   </ul>
