@@ -7,12 +7,16 @@ import { CardMyServices } from './CardMyServices';
 
 export const MyServices = () => {
   const user = useStore($user);
-  const { data, status } = getServiceInstancesbyUser({
+  const { data, status, isLoading } = getServiceInstancesbyUser({
     userId: user.id,
   });
 
   return (
-    <UIGuard isLoggedIn={true} roles={[userRoles.User.id]}>
+    <UIGuard
+      isLoading={isLoading}
+      isLoggedIn={true}
+      roles={[userRoles.User.id]}
+    >
       <div>
         <h1 className="text-3xl text-center font-semibold">Mis Servicios</h1>
         <p className="text-center text-slate-400 mb-4">
