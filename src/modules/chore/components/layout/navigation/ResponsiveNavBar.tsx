@@ -10,6 +10,7 @@ export const ResponsiveNavBar = ({ pathName }: { pathName: string }) => {
     <>
       <button
         onClick={() => setIsOpen(!isOpen)}
+        aria-label="Abrir menú"
         className="fixed right-1 flex items-center justify-center md:hidden"
       >
         <MenuButtonIcon />
