@@ -1,19 +1,6 @@
 ---
-import { ControlPanelNavbarLinks } from '@chore/components/layout/ControlPanel/ControlPanelNavbarLinks';
+import { ResponsiveControlPanelNavBar } from './ResponsiveControlPanelNavBar';
 const pathName = Astro.url.pathname;
 ---
 
-<nav
-  class="dark:bg-primario bg-secundario text-primario dark:text-secundario z-30"
->
-  <ul class="flex flex-col items-center gap-4">
-    <ControlPanelNavbarLinks pathName={pathName} client:only="react" />
-  </ul>
-</nav>
-
-<style is:global>
-  .linkNav:hover .absolute {
-    width: 100%;
-    height: 2px;
-  }
-</style>
+<ResponsiveControlPanelNavBar pathName={pathName} client:only="react" />
