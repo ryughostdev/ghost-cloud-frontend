@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { ControlPanelNavbarLinks } from './ControlPanelNavbarLinks';
 import { MenuButtonIcon } from '../../icons/MenuButtonIcon';
+import type { LinksProps } from '@/modules/chore/interfaces/NavbarInterfaces';
+import { userRoles } from '@/modules/chore/config/constants';
+import { NavbarLinks } from '../navigation/NavbarLinks';
 
 export const ResponsiveControlPanelNavBar = ({
   pathName,
@@ -8,23 +10,36 @@ export const ResponsiveControlPanelNavBar = ({
   pathName: string;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const links: LinksProps[] = [
+    {
+      name: 'Clientes',
+      href: '/panel-de-control/clientes',
+      isLoggedIn: true,
+      roles: [userRoles.Admin.id],
+    },
+    {
+      name: 'Servicios',
+      href: 'panel-de-control/servicios',
+      isLoggedIn: true,
+      roles: [userRoles.Admin.id],
+    },
+  ];
   return (
     <>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        aria-label="Abrir menú"
-        className="fixed left-1 flex items-center justify-center md:hidden z-40"
+        aria-label="Abrir menú de panel de control"
+        className="active:scale-85 fixed left-2 mt-2 flex items-center justify-center md:hidden z-40"
       >
         <MenuButtonIcon />
       </button>
       <nav
         className={`${
-          isOpen ? 'flex w-1/4' : 'hidden md:flex'
-        }fixed md:relative flex-col dark:bg-primario bg-secundario text-primario dark:text-secundario z-30`}
+          isOpen ? 'flex' : 'hidden md:flex'
+        } p-6 w-1/4 min-w-[15rem] h-full md:static flex fixed flex-col items-center rounded-xl bg-slate-900 md:bg-secundario md:dark:bg-primario border-2 border-primario dark:border-secundario text-primario dark:text-secundario z-30`}
       >
-        <ul className="flex flex-col items-center gap-4 bg-slate-900">
-          <ControlPanelNavbarLinks pathName={pathName} />
+        <ul className="flex flex-col items-center pt-6 gap-4">
+          <NavbarLinks pathName={pathName} links={links} />
         </ul>
       </nav>
       {isOpen && (

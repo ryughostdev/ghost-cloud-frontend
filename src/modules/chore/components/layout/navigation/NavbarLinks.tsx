@@ -1,30 +1,12 @@
-import { userRoles } from '../../../config/constants';
 import { type LinksProps } from '../../../interfaces/NavbarInterfaces';
 import { checkUserStatus } from '../../../utils/checkUserStatus';
-export const NavbarLinks = ({ pathName }: { pathName: string }) => {
-  const links: LinksProps[] = [
-    {
-      name: 'Contacto',
-      href: '/contacto',
-      isLoggedIn: false,
-      roles: [],
-      negativeRoles: [userRoles.Admin.id],
-    },
-    {
-      name: 'Mis servicios',
-      href: '/mis-servicios',
-      isLoggedIn: true,
-      roles: [],
-      negativeRoles: [userRoles.Admin.id],
-    },
-    {
-      name: 'Panel de Control',
-      href: '/panel-de-control',
-      isLoggedIn: true,
-      roles: [userRoles.Admin.id],
-    },
-  ];
-
+export const NavbarLinks = ({
+  pathName,
+  links,
+}: {
+  pathName: string;
+  links: LinksProps[];
+}) => {
   return (
     <>
       {links.map(({ name, href, isLoggedIn, roles, negativeRoles }) =>

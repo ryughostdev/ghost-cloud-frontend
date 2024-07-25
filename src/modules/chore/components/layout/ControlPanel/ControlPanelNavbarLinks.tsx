@@ -22,7 +22,7 @@ export const ControlPanelNavbarLinks = ({ pathName }: { pathName: string }) => {
     <>
       {links.map(({ name, href, isLoggedIn, roles, negativeRoles }) =>
         checkUserStatus({ isLoggedIn, roles, negativeRoles }) ? (
-          <li key={name}>
+          <li className="" key={name}>
             <a
               href={href}
               className={`linkNav relative font-code ${
