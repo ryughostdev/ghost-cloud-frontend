@@ -42,7 +42,7 @@ export const ResponsiveNavBar = ({ pathName }: { pathName: string }) => {
       <a href="/" className="text-xl font-bold font-code uppercase">
         {appName}
       </a>
-      <nav className={`${isOpen ? 'flex' : 'hidden'} md:flex`}>
+      <nav className={`${isOpen ? 'flex' : 'hidden md:flex'}`}>
         <ul className="flex flex-col md:flex-row rounded-t-xl dark:border-secundario border-primario md:border-none border-2 fixed top-[5rem] md:top-auto right-0 h-full sm:w-1/2 md:w-full p-5 md:p-0 bg-slate-900 md:bg-transparent md:visible md:relative gap-4 z-50">
           <NavbarLinks pathName={pathName} links={links} />
           <LoginNavButton pathName={pathName} />

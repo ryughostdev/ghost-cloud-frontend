@@ -19,7 +19,7 @@ export const ResponsiveControlPanelNavBar = ({
     },
     {
       name: 'Servicios',
-      href: 'panel-de-control/servicios',
+      href: '/panel-de-control/servicios',
       isLoggedIn: true,
       roles: [userRoles.Admin.id],
     },
