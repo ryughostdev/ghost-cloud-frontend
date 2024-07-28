@@ -2,6 +2,7 @@
 import { appName } from '@/modules/chore/config/constants';
 import MainLayout from './MainLayout.astro';
 import ControlPanelNavBar from '@/modules/chore/components/layout/ControlPanel/ControlPanelNavBar.astro';
+
 interface Props {
   title?: string;
   description?: string;
@@ -17,7 +18,9 @@ const {
 
 <MainLayout title={title} description={description} image={image}>
   <div class="flex w-full h-full">
-    <ControlPanelNavBar />
-    <section class="w-3/4 z-10"><slot /></section>
+    <div class="md:w-1/4 h-full">
+      <ControlPanelNavBar />
+    </div>
+    <section class="md:w-3/4 z-10 h-full"><slot /></section>
   </div>
 </MainLayout>

@@ -5,9 +5,11 @@ const pathName = Astro.url.pathname;
 ---
 
 <div
-  class="z-50 flex justify-center md:justify-between items-center w-3/4 h-[5rem] p-4 fixed top-0 dark:bg-primario bg-secundario text-primario dark:text-secundario"
+  class="z-50 h-[4rem] flex justify-center items-center w-full fixed top-0 dark:bg-primario bg-secundario text-primario dark:text-secundario"
 >
-  <ResponsiveNavBar pathName={pathName} client:only="react" />
+  <div class="flex justify-center md:justify-between items-center w-2/3 h-full">
+    <ResponsiveNavBar pathName={pathName} client:only="react" />
+  </div>
 </div>
 
 <style is:global>

@@ -19,3 +19,8 @@ export const countryCodes: {
   currency: string;
   langCountry: string;
 }[] = countryCodesJson;
+
+export const translates = {
+  active: 'Activo',
+  inactive: 'Inactivo',
+};

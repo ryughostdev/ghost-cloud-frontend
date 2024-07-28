@@ -27,7 +27,7 @@ export const UIGuard = ({
     <>
       <Spinner isLoading={pageLoading} />
 
-      <div>
+      <>
         {checkUserStatus({ isLoggedIn, roles, negativeRoles }) ? (
           children
         ) : (
@@ -35,7 +35,7 @@ export const UIGuard = ({
             {user.isLoggedIn ? 'No tiene Permisos' : 'Debe iniciar sesión'}
           </div>
         )}
-      </div>
+      </>
     </>
   );
 };

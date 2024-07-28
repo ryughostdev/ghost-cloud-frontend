@@ -1,5 +1,6 @@
 ---
 import ControlPanelLayout from '@/layouts/ControlPanelLayout.astro';
+import { ControlPanelClients } from '@/modules/controlPanel/components/clients/ControlPanelClients';
 import { appName } from '@chore/config/constants';
 ---
 
@@ -7,7 +8,7 @@ import { appName } from '@chore/config/constants';
   title=`Panel de gestión de Clientes | ${appName}`
   description=`panel de gestión de Clientes de ${appName}.`
 >
-  <section class="flex flex-col items-center justify-center w-full h-full">
-    Panel de Gestión de Clientes
-  </section>
+  <div class="flex flex-col w-full h-full px-4">
+    <ControlPanelClients client:only="react" />
+  </div>
 </ControlPanelLayout>

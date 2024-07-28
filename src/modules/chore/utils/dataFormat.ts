@@ -23,7 +23,7 @@ export const formatNumber = (number: number) => {
   }).format(number);
 };
 
-export const formatDate = (date: string) => {
+export const formatDate = (date: string | Date) => {
   const dateObject = new Date(date);
 
   const day = dateObject.getDate() + 1;

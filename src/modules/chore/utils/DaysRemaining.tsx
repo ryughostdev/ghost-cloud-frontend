@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 export const DaysRemaining = ({
   expirationDate,
 }: {
-  expirationDate: string;
+  expirationDate: string | Date;
 }) => {
   const [daysRemaining, setDaysRemaining] = useState(0);
 
@@ -29,7 +29,7 @@ export const DaysRemaining = ({
 };
 
 // Function to calculate the difference in days
-const calculateDaysRemaining = (expirationDate: string) => {
+const calculateDaysRemaining = (expirationDate: string | Date) => {
   const today = new Date();
   const expiration = new Date(expirationDate);
 

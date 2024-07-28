@@ -23,13 +23,13 @@ const {
   </head>
 
   <body
-    class="font-geist dark:bg-primario bg-secundario text-primario dark:text-secundario flex flex-col h-screen w-full justify-center items-center"
+    class="font-geist dark:bg-primario bg-secundario text-primario dark:text-secundario flex flex-col w-full"
   >
     <CheckIsLoggedIn client:only="react" />
-    <header class="w-full flex justify-center items-center">
+    <header class="w-full flex justify-center items-center h-[5rem]">
       <Navbar />
     </header>
-    <main class="flex flex-col h-full w-full mt-[5rem] items-center relative">
+    <main class="flex flex-col h-full w-full items-center relative">
       <slot />
     </main>
   </body>
