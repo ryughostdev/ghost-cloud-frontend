@@ -23,7 +23,7 @@ export const fetchData = <TResponse>({
   );
 };
 
-export const postData = <TResponse>({
+export const postData = <TResponse, TData = undefined>({
   key,
   url,
   method = 'POST',
@@ -33,15 +33,15 @@ export const postData = <TResponse>({
   url: string;
   method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
   isFormData?: boolean;
-}): UseMutationResult<TResponse, Error, unknown, unknown> => {
-  return useMutation<TResponse, Error, unknown, unknown>(
+}): UseMutationResult<TResponse, Error, TData | null, unknown> => {
+  return useMutation<TResponse, Error, TData | null, unknown>(
     {
       mutationKey: [key],
-      mutationFn: async (data?: any) => {
+      mutationFn: async (data?: TData | null) => {
         return await fetchAPI<TResponse>({
           url,
           method,
-          body: data ?? undefined,
+          body: (data as FormData | null) ?? undefined,
           isFormData,
         });
       },

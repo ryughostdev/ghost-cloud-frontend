@@ -8,6 +8,8 @@ export interface ClientServiceInstance
     'id' | 'serviceId' | 'status' | 'paymentDate'
   > {}
 
+export interface UpdateClientServiceInstance extends Partial<ServiceInstance> {}
+
 export interface ClientsControlPanel extends Omit<User, 'roles'> {
   roles: { id: number }[];
   createdAt: Date;

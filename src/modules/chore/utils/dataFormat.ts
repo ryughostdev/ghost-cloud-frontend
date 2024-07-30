@@ -26,8 +26,15 @@ export const formatNumber = (number: number) => {
 export const formatDate = (date: string | Date) => {
   const dateObject = new Date(date);
 
-  const day = dateObject.getDate() + 1;
-  const month = dateObject.getMonth() + 1; // Los meses van de 0 a 11, por eso se suma 1
+  // Obtener el día, mes y año
+  const day = dateObject.getDate();
+  const month = dateObject.getMonth() + 1; // Los meses van de 0 a 11
   const year = dateObject.getFullYear();
-  return `${day}-${month}-${year}`;
+
+  // Formatear el día y el mes para que siempre tengan dos dígitos
+  const formattedDay = day < 10 ? `0${day}` : day;
+  const formattedMonth = month < 10 ? `0${month}` : month;
+
+  // Retornar en formato dd-mm-yyyy
+  return `${formattedDay}-${formattedMonth}-${year}`;
 };

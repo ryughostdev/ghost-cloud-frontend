@@ -1,12 +1,12 @@
-import { translates } from '@/modules/chore/config/constants';
 import type { ClientsControlPanel } from '../../interfaces/controlPanelInterface';
-import { DaysRemaining } from '@/modules/chore/utils/DaysRemaining';
-import { formatDate } from '@/modules/chore/utils/dataFormat';
+import { ControlPanelClientsServicesCard } from '../ControlPanelClientsServicesCard';
 
 export const ControlPanelClientCard = ({
   client,
+  refetch,
 }: {
   client: ClientsControlPanel;
+  refetch: () => void;
 }) => {
   return (
     <div className="rounded-xl p-4 flex flex-col items-center gap-2 border-2 border-secundario w-[15rem] text-center ">
@@ -25,20 +25,12 @@ export const ControlPanelClientCard = ({
           </h4>
           <div className="flex flex-wrap gap-2 justify-center mt-3">
             {client.services.map((service) => (
-              <div
-                className={`flex flex-col items-center justify-center rounded-lg border-2 ${
-                  service.status === 'active'
-                    ? 'border-secundario'
-                    : 'border-red-600'
-                } p-2 w-[12rem]`}
+              <ControlPanelClientsServicesCard
                 key={service.id}
-              >
-                <p className="text-sm">
-                  {service.id}-{translates[service.status]}
-                </p>
-                <DaysRemaining expirationDate={service.paymentDate} />
-                <p>{formatDate(service.paymentDate)}</p>
-              </div>
+                userId={client.id}
+                service={service}
+                refetch={refetch}
+              />
             ))}
           </div>
         </div>

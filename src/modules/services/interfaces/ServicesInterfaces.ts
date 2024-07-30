@@ -17,7 +17,7 @@ export interface ServiceInstance {
   ip: string;
   serviceUsername: string;
   servicePassword: string;
-  paymentDate: Date;
+  paymentDate: Date | string;
   price: number;
   status: 'active' | 'inactive';
   createdAt: Date;
