@@ -17,7 +17,7 @@ export const useAddNewServiceInstance = ({
   formInit: FormInitCreateClientServiceInstance;
 }) => {
   const { data: servicesData, status: servicesStatus } = getServices();
-  const { mutate, status } = createClientServiceInstance();
+  const { mutate, status, isPending } = createClientServiceInstance();
   const [form, setForm] = useState(formInit);
   const [serviceIdValue, setServiceIdValue] = useState<Selection>(new Set());
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -27,7 +27,7 @@ export const useAddNewServiceInstance = ({
       refetch();
       onOpenChange();
     }
-  }, [status, refetch]);
+  }, [status]);
   useEffect(() => {
     if (
       // @ts-ignore
@@ -52,7 +52,44 @@ export const useAddNewServiceInstance = ({
       paymentDate: getNextPaymentDate(new Date(), 'yyyy-MM-dd'),
     }));
   }, []);
-  const handleSubmit = () => {
+  const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (form.price === 0) {
+      ghostToast({
+        message: 'El precio del servicio no puede ser 0',
+        type: 'error',
+      });
+      return;
+    }
+    if (form.paymentDate === '') {
+      ghostToast({
+        message: 'La fecha de pago no puede estar vacía',
+        type: 'error',
+      });
+      return;
+    }
+    if (form.ip === '') {
+      ghostToast({
+        message: 'La dirección IP no puede estar vacía',
+        type: 'error',
+      });
+      return;
+    }
+    if (form.serviceUsername === '') {
+      ghostToast({
+        message: 'El nombre de usuario no puede estar vacío',
+        type: 'error',
+      });
+      return;
+    }
+    if (form.servicePassword === '') {
+      ghostToast({
+        message: 'La contraseña no puede estar vacía',
+        type: 'error',
+      });
+      return;
+    }
+
     // @ts-ignore
     if (serviceIdValue.size > 0) {
       mutate({
@@ -61,6 +98,12 @@ export const useAddNewServiceInstance = ({
         serviceId: parseInt(Array.from(serviceIdValue)[0].toString()),
         paymentDate: new Date(form.paymentDate).toISOString(),
       });
+    } else {
+      ghostToast({
+        message: 'Selecciona un servicio',
+        type: 'error',
+      });
+      return;
     }
   };
   return {
@@ -71,5 +114,6 @@ export const useAddNewServiceInstance = ({
     handleOnChange: (e: ChangeEvent<HTMLInputElement>) =>
       handleOnChange(setForm, e),
     dataFetching: { servicesData, servicesStatus },
+    isPending,
   };
 };

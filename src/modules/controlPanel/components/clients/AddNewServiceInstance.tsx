@@ -29,6 +29,7 @@ export const AddNewServiceInstance = ({
     servicePassword,
     paymentDate,
     price,
+    isPending,
   } = useAddNewServiceInstance({
     userId,
     refetch,
@@ -65,26 +66,26 @@ export const AddNewServiceInstance = ({
                   id="serviceInstanceForm"
                   onSubmit={handleSubmit}
                 >
-                  {servicesStatus === 'success' && (
-                    <Select
-                      isRequired
-                      selectedKeys={serviceIdValue}
-                      onSelectionChange={setServiceIdValue}
-                      items={servicesData}
-                      label="Selecciona un servicio"
-                      className="max-w-xs"
-                    >
-                      {(service) => (
-                        <SelectItem
-                          key={service.id}
-                          value={service.id.toString()}
-                          textValue={`${service.name} - ${service.id} ( $${service.price} )`}
-                        >
-                          {`${service.name} - ${service.id} (${service.cores} cores - ${service.memory} GB - ${service.disk} GB - $${service.price})`}
-                        </SelectItem>
-                      )}
-                    </Select>
-                  )}
+                  <Select
+                    isLoading={servicesStatus === 'pending'}
+                    isRequired
+                    selectedKeys={serviceIdValue}
+                    onSelectionChange={setServiceIdValue}
+                    items={servicesData}
+                    label="Selecciona un servicio"
+                    className="max-w-xs"
+                  >
+                    {(service) => (
+                      <SelectItem
+                        key={service.id}
+                        value={service.id.toString()}
+                        textValue={`${service.name} - ${service.id} ( $${service.price} )`}
+                      >
+                        {`${service.name} - ${service.id} (${service.cores} cores - ${service.memory} GB - ${service.disk} GB - $${service.price})`}
+                      </SelectItem>
+                    )}
+                  </Select>
+
                   <Input
                     isRequired
                     label="Dirección IP"
@@ -143,6 +144,7 @@ export const AddNewServiceInstance = ({
                   Cerrar
                 </Button>
                 <Button
+                  isLoading={isPending}
                   form="serviceInstanceForm"
                   color="primary"
                   type="submit"
