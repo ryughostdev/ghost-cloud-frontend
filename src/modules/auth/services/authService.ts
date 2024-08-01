@@ -1,6 +1,10 @@
 import { postData } from '@/modules/chore/services/HandleAPI';
 import { Server1API } from '@/modules/chore/config/constants';
-import type { LoggedUser } from '../interfaces/LoginInterface';
+import type {
+  LoggedUser,
+  LoginInterface,
+  SignUpInterface,
+} from '../interfaces/LoginInterface';
 
 export const logoutService = () => {
   return postData({
@@ -10,14 +14,14 @@ export const logoutService = () => {
   });
 };
 export const loginService = () => {
-  return postData<LoggedUser>({
+  return postData<LoggedUser, LoginInterface>({
     key: 'login',
     url: `${Server1API}/auth/login`,
     method: 'POST',
   });
 };
 export const signUpService = () => {
-  return postData({
+  return postData<LoggedUser, SignUpInterface>({
     key: 'sign-up',
     url: `${Server1API}/users`,
     method: 'POST',

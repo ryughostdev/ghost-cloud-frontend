@@ -1,5 +1,6 @@
 import type { ClientsControlPanel } from '../../interfaces/controlPanelInterface';
 import { ControlPanelClientsServicesCard } from '../ControlPanelClientsServicesCard';
+import { AddNewServiceInstance } from './AddNewServiceInstance';
 
 export const ControlPanelClientCard = ({
   client,
@@ -9,7 +10,7 @@ export const ControlPanelClientCard = ({
   refetch: () => void;
 }) => {
   return (
-    <div className="rounded-xl p-4 flex flex-col items-center gap-2 border-2 border-secundario w-[15rem] text-center ">
+    <div className="rounded-xl p-4 flex flex-col items-center gap-2 border-2 border-secundario w-[15rem] h-full text-center ">
       <div className="flex flex-col h-1/3">
         <h4 className="">
           {client.id}-{client.name}
@@ -32,10 +33,13 @@ export const ControlPanelClientCard = ({
                 refetch={refetch}
               />
             ))}
+            <AddNewServiceInstance userId={client.id} refetch={refetch} />
           </div>
         </div>
       ) : (
-        <p>No tiene servicios contratados</p>
+        <div>
+          <AddNewServiceInstance userId={client.id} refetch={refetch} />
+        </div>
       )}
     </div>
   );

@@ -26,10 +26,10 @@ export const formatNumber = (number: number) => {
 export const formatDate = (date: string | Date) => {
   const dateObject = new Date(date);
 
-  // Obtener el día, mes y año
-  const day = dateObject.getDate();
-  const month = dateObject.getMonth() + 1; // Los meses van de 0 a 11
-  const year = dateObject.getFullYear();
+  // Obtener el día, mes y año usando métodos UTC para evitar problemas de zona horaria
+  const day = dateObject.getUTCDate();
+  const month = dateObject.getUTCMonth() + 1; // Los meses van de 0 a 11
+  const year = dateObject.getUTCFullYear();
 
   // Formatear el día y el mes para que siempre tengan dos dígitos
   const formattedDay = day < 10 ? `0${day}` : day;
@@ -37,4 +37,13 @@ export const formatDate = (date: string | Date) => {
 
   // Retornar en formato dd-mm-yyyy
   return `${formattedDay}-${formattedMonth}-${year}`;
+};
+
+export const convertDateForInput = (date: string | Date) => {
+  const fecha = new Date(date);
+  const year = fecha.getUTCFullYear();
+  const month = (fecha.getUTCMonth() + 1).toString().padStart(2, '0'); // Los meses son 0-indexados
+  const day = fecha.getUTCDate().toString().padStart(2, '0');
+
+  return `${year}-${month}-${day}`;
 };

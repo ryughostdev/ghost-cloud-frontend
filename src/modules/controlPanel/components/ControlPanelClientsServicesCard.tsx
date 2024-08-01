@@ -13,9 +13,9 @@ import {
   Checkbox,
 } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
-import { updateClientServiceInstance } from '../services/clientsService';
 import { ghostToast } from '@/modules/chore/components/ghostToast';
 import { getNextPaymentDate } from '@/modules/chore/utils/datesUtils';
+import { updateClientServiceInstance } from '@/modules/services/services/serviceInstancesService';
 
 export const ControlPanelClientsServicesCard = ({
   userId,
@@ -57,11 +57,11 @@ export const ControlPanelClientsServicesCard = ({
   };
 
   return (
-    <div
-      onClick={onOpen}
-      className={`flex flex-col items-center justify-center rounded-lg border-2 hover:cursor-pointer ${
+    <Button
+      onPress={onOpen}
+      className={`flex flex-col items-center justify-center rounded-lg border-2 ${
         service.status === 'active' ? 'border-secundario' : 'border-red-600'
-      } p-2 w-[12rem]`}
+      } p-2 w-[12rem] h-full dark:bg-primario`}
     >
       <p className="text-sm">
         {service.id}-{translates[service.status]}
@@ -118,6 +118,6 @@ export const ControlPanelClientsServicesCard = ({
           )}
         </ModalContent>
       </Modal>
-    </div>
+    </Button>
   );
 };

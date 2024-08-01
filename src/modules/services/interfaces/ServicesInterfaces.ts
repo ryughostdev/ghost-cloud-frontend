@@ -24,3 +24,9 @@ export interface ServiceInstance {
   updatedAt: Date;
   service: Service;
 }
+
+export interface CreateServiceInstance
+  extends Omit<
+    ServiceInstance,
+    'id' | 'status' | 'createdAt' | 'updatedAt' | 'service'
+  > {}

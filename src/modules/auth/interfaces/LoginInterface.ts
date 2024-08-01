@@ -8,3 +8,13 @@ export interface User {
 export interface LoggedUser extends User {
   isLoggedIn: boolean;
 }
+
+export interface LoginInterface {
+  email: string;
+  password: string;
+}
+export interface SignUpInterface {
+  email: string;
+  password: string;
+  name: string;
+}

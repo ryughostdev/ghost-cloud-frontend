@@ -31,3 +31,11 @@ export interface ControlPanelClientsFiltersProps {
     setFilters: SetFilters;
   };
 }
+
+export interface FormInitCreateClientServiceInstance {
+  ip: string;
+  serviceUsername: string;
+  servicePassword: string;
+  paymentDate: Date | string;
+  price: number;
+}

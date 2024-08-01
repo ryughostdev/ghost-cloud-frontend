@@ -1,4 +1,7 @@
-export function getNextPaymentDate(currentDateString: string | Date): string {
+export function getNextPaymentDate(
+  currentDateString: string | Date,
+  format: 'iso' | 'yyyy-MM-dd' = 'iso'
+): string {
   const currentDate = new Date(currentDateString);
 
   // Obtener el día actual
@@ -14,5 +17,16 @@ export function getNextPaymentDate(currentDateString: string | Date): string {
     currentDate.setDate(0); // Esto ajusta al último día del mes anterior
   }
 
-  return currentDate.toISOString();
+  // Devolver el resultado en el formato deseado
+  if (format === 'iso') {
+    return currentDate.toISOString();
+  } else if (format === 'yyyy-MM-dd') {
+    // Formatear la fecha como "yyyy-MM-dd"
+    const year = currentDate.getFullYear();
+    const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+    const day = currentDate.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  } else {
+    throw new Error('Formato no soportado');
+  }
 }
