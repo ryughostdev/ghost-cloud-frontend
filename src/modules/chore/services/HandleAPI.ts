@@ -10,14 +10,17 @@ import { client } from '@chore/config/tanstack';
 export const fetchData = <TResponse>({
   key,
   url,
+  isEnabled = true,
 }: {
   key: string;
   url: string;
+  isEnabled?: boolean;
 }): UseQueryResult<TResponse, Error> => {
   return useQuery<TResponse, Error>(
     {
       queryKey: [key],
       queryFn: () => fetchAPI<TResponse>({ url }),
+      enabled: !!isEnabled,
     },
     client
   );

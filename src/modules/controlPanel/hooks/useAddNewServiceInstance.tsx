@@ -6,6 +6,7 @@ import { handleOnChange } from '@chore/utils/formUtils';
 import { getServices } from '@/modules/services/services/servicesService';
 import { getNextPaymentDate } from '@/modules/chore/utils/datesUtils';
 import { createClientServiceInstance } from '@/modules/services/services/serviceInstancesService';
+import type { ServiceInstancehandleSubmit } from '@/modules/services/interfaces/ServiceInstanceFormIterfaces';
 
 export const useAddNewServiceInstance = ({
   userId,
@@ -52,7 +53,7 @@ export const useAddNewServiceInstance = ({
       paymentDate: getNextPaymentDate(new Date(), 'yyyy-MM-dd'),
     }));
   }, []);
-  const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
+  const serviceInstancehandleSubmit: ServiceInstancehandleSubmit = (e) => {
     e.preventDefault();
     if (form.price === 0) {
       ghostToast({
@@ -107,13 +108,13 @@ export const useAddNewServiceInstance = ({
     }
   };
   return {
-    ...form,
+    serviceInstanceForm: form,
     modalHandlers: { isOpen, onOpen, onOpenChange },
-    handleSubmit,
-    selectHandlers: { serviceIdValue, setServiceIdValue },
+    serviceInstancehandleSubmit,
+    serviceInstanceFormSelectHandlers: { serviceIdValue, setServiceIdValue },
     handleOnChange: (e: ChangeEvent<HTMLInputElement>) =>
       handleOnChange(setForm, e),
-    dataFetching: { servicesData, servicesStatus },
+    ServicesDataFetching: { servicesData, servicesStatus },
     isPending,
   };
 };

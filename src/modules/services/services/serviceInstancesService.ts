@@ -12,11 +12,31 @@ export const getServiceInstancesbyUser = ({ userId }: { userId: number }) => {
     url: `${Server1API}/services/instances/${userId}`,
   });
 };
+export const getServiceInstancesbyInstanceId = ({
+  instanceId,
+  isEnabled = true,
+}: {
+  instanceId: number;
+  isEnabled?: boolean;
+}) => {
+  return fetchData<ServiceInstance>({
+    key: 'GetInstanceByInstanceIdService',
+    url: `${Server1API}/services/instances/${instanceId}`,
+    isEnabled,
+  });
+};
 
 export const updateClientServiceInstance = ({ id }: { id: number }) => {
   return postData<ServiceInstance, UpdateClientServiceInstance>({
     method: 'PATCH',
     key: 'UpdateClientServiceInstance',
+    url: `${Server1API}/services/instances/${id}`,
+  });
+};
+export const deleteClientServiceInstance = ({ id }: { id: number }) => {
+  return postData<ServiceInstance>({
+    method: 'DELETE',
+    key: 'DeleteClientServiceInstance',
     url: `${Server1API}/services/instances/${id}`,
   });
 };
